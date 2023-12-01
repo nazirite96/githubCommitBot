@@ -2,7 +2,7 @@ name: woongsCommitBot
 
 on:
   schedule:
-    - cron: '* * * * *'
+    - cron: '0 0 * * *'
 
 jobs:
   test_schedule:
