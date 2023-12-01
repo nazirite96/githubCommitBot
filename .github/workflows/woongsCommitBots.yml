@@ -1,0 +1,29 @@
+name: woongsCommitBot
+
+on:
+  schedule:
+    - cron: '0 0 * * *'
+
+jobs:
+  test_schedule:
+    runs-on: ubuntu-latest
+    steps:
+      - name: echo repository name
+        run: echo "${{ github.repository }}"
+
+      - name: repository checkout
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ github.repository }}
+          token: ${{ secrets.MY_GITHUB_TOKEN }}
+          path: githubCommitBot
+
+      - name: Add date and push
+        run: |
+          cd githubCommitBot
+          date >> date.txt
+          git add .
+          git config --global user.email "wkek805@naver.com"
+          git config --global user.name "nazirite96"
+          git commit -am "Inject Date"
+          git push
