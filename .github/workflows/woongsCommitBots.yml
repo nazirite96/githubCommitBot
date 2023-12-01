@@ -8,9 +8,6 @@ jobs:
   test_schedule:
     runs-on: ubuntu-latest
     steps:
-      - name: echo repository name
-        run: echo "${{ github.repository }}"
-
       - name: repository checkout
         uses: actions/checkout@v4
         with:
